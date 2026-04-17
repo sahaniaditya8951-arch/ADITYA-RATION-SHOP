@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baragadhi - Total Rashan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-yellow-400 p-4 shadow-md sticky top-0 z-10">
+        <h1 class="text-2xl font-bold text-center text-green-800">BARAGADHI TOTAL RASHAN</h1>
+        <p class="text-center text-sm font-semibold text-gray-800">Gorakhpur's Best Price Store</p>
+    </header>
+
+    <div class="p-4 bg-white shadow-sm sticky top-[72px] z-10">
+        <div class="relative">
+            <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+            <input type="text" id="searchInput" placeholder="Search product (Rice, Dal, Oil...)" 
+                   class="w-full pl-10 p-3 rounded-lg border-2 border-yellow-400 focus:outline-none focus:border-green-600 bg-gray-50 text-sm">
+        </div>
+    </div>
+
+    <div id="productList" class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-24">
+        </div>
+
+    <footer class="fixed bottom-0 w-full bg-white border-t p-4 flex justify-between items-center shadow-[0_-5px_10px_rgba(0,0,0,0.1)]">
+        <div>
+            <p class="text-xs text-gray-500">Order on WhatsApp</p>
+            <p class="font-bold text-green-700 text-lg">7525008951</p>
+        </div>
+        <a href="https://wa.me/917525008951?text=Hello, I want to order some items from Baragadhi Total Rashan." 
+           class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full font-bold flex items-center shadow-md transition-all">
+            <i class="fab fa-whatsapp text-xl mr-2"></i> Order Now
+        </a>
+    </footer>
+
+    <script>
+        const products = [
+            { name: "PANCHKANYA USNA RICE 25KG", mrp: "N/A", price: 1155 },
+            { name: "BABA ARWA SONAM RICE 25KG", mrp: "N/A", price: 1134 },
+            { name: "SONPARI USNA KATARNI RICE 25KG", mrp: "N/A", price: 914 },
+            { name: "LAKHIBHOG USNA RICE 25KG", mrp: "N/A", price: 1144 },
+            { name: "BABA STEAM KATARNI RICE 25KG", mrp: "N/A", price: 933 },
+            { name: "GOOD DAY ARWA SONACHUR RICE NEW 25KG", mrp: "N/A", price: 1521 },
+            { name: "GOOD DAY ARWA SONACHUR RICE OLD 25KG", mrp: "N/A", price: 1627 },
+            { name: "BABA ARWA KATARNI RICE 25KG", mrp: "N/A", price: 888 },
+            { name: "KAKA ARWA MANSURI RICE 25KG", mrp: "N/A", price: 925 },
+            { name: "KRISHNA BHOG USNA RICE 25KG", mrp: "N/A", price: 709 },
+            { name: "BABA PREMIUM USNA RICE 25KG", mrp: "N/A", price: 785 },
+            { name: "NAWAJISH 1KG", mrp: 170, price: 101 },
+            { name: "INDIA GATE 1.25KG", mrp: 160, price: 129 },
+            { name: "DAAWAT RICE 1.25KG", mrp: 165, price: 117 },
+            { name: "BABA SPECIAL USNA RICE 25KG", mrp: "N/A", price: 990 },
+            { name: "PANCHKANYA BANSKATHI USNA RICE 25KG", mrp: "N/A", price: 1230 },
+            { name: "SRM MANSURI USNA RICE 25KG", mrp: "N/A", price: 675 },
+            { name: "ARHAR DAL 1KG", mrp: "N/A", price: 67 },
+            { name: "MOONG DAL 1KG", mrp: "N/A", price: 69 },
+            { name: "URAD DAL 1KG", mrp: "N/A", price: 68 },
+            { name: "MASUR DAL 1KG", mrp: "N/A", price: 49 },
+            { name: "CHANA DAL 1KG", mrp: "N/A", price: 58 },
+            { name: "SHAKTIBHOG ATTA 10KG", mrp: 370, price: 297 },
+            { name: "SHAKTIBHOG ATTA 5KG", mrp: 215, price: 150 },
+            { name: "AASHIRVAD ATTA 10KG", mrp: 350, price: 300 },
+            { name: "AASHIRVAD ATTA 5KG", mrp: 180, price: 156 },
+            { name: "PATANJALI ATTA 10KG", mrp: 310, price: 301 },
+            { name: "PATANJALI ATTA 5KG", mrp: 155, price: 156 },
+            { name: "BEST QUALITY AJWAIN 100GM", mrp: "N/A", price: 28 },
+            { name: "BEST QUALITY MANGRELA 100GM", mrp: "N/A", price: 22 },
+            { name: "BEST QUALITY JEERA 100GM", mrp: "N/A", price: 28 },
+            { name: "BEST QUALITY GOLKI 100GM", mrp: "N/A", price: 67 },
+            { name: "HORLICKS 1KG BOX", mrp: 416, price: 392 },
+            { name: "HORLICKS 500GM BOX", mrp: 225, price: 215 },
+            { name: "CHANASAABUT 1KG", mrp: "N/A", price: 60 },
+            { name: "SUGAR 1KG", mrp: "N/A", price: 41 },
+            { name: "SALONI MUSTARD OIL 1LTR", mrp: 110, price: 99 },
+            { name: "ELEPHANT MUSTARD OIL 1LTR", mrp: 140, price: 104 },
+            { name: "PATANJALI MUSTARD OIL 1LTR", mrp: 115, price: 113 },
+            { name: "ENGINE MUSTARD OIL 1LTR", mrp: 120, price: 115 },
+            { name: "SAFFOLA GOLD EDIBLE OIL 1LTR", mrp: 130, price: 128 },
+            { name: "FORTUNE SOYA REFINED 1LTR", mrp: 115, price: 92 },
+            { name: "FORTUNE SOYA REFINED 1/2LTR", mrp: 60, price: 48 },
+            { name: "PATANJALI SOYA REFINED 1LTR", mrp: 90, price: 89 },
+            { name: "ANJEER 300GM", mrp: 355, price: 281 },
+            { name: "KAJU 250GM", mrp: 535, price: 259 },
+            { name: "ALMONDS 250GM", mrp: 320, price: 199 },
+            { name: "AKHROT TIM TIM 250GM", mrp: 555, price: 299 },
+            { name: "DHARA VEGETABLE OIL 1LTR", mrp: 147, price: 132 },
+            { name: "OLIVE OIL 200ML", mrp: 225, price: 172 }
+        ];
+
+        function displayProducts(filter = "") {
+            const list = document.getElementById('productList');
+            list.innerHTML = "";
+            const filtered = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
+
+            if(filtered.length === 0) {
+                list.innerHTML = `<p class="text-center text-gray-500 mt-4 w-full">No products found.</p>`;
+                return;
+            }
+
+            filtered.forEach(p => {
+                const mrpDisplay = p.mrp === "N/A" 
+                    ? `<span class="text-xs text-gray-400 invisible">MRP: -</span>` 
+                    : `<span class="text-xs text-red-400 line-through">MRP: ₹${p.mrp}</span>`;
+
+                const card = `
+                    <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-yellow-400 flex justify-between items-center">
+                        <div class="w-3/4 pr-2">
+                            <h3 class="font-bold text-gray-800 text-sm leading-tight mb-1">${p.name}</h3>
+                            <div class="flex items-center gap-2">
+                                <span class="text-lg font-extrabold text-green-700">₹${p.price}</span>
+                                ${mrpDisplay}
+                            </div>
+                        </div>
+                        <button onclick="window.location.href='https://wa.me/917525008951?text=Hello, I want to order: ${p.name}'" 
+                                class="bg-green-100 hover:bg-green-200 text-green-800 p-2 px-3 rounded-lg text-xs font-bold transition-colors border border-green-200">
+                            Add +
+                        </button>
+                    </div>
+                `;
+                list.innerHTML += card;
+            });
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => displayProducts(e.target.value));
+        displayProducts();
+    </script>
+</body>
+</html>
